@@ -3,7 +3,7 @@
 ## Project Description
 
 A simple Flask REST API for managing a small in-memory collection of books.
-It supports listing, reading, creating, updating, and deleting books.
+It supports listing, retrieving, creating, updating, and deleting books.
 
 ---
 
@@ -110,17 +110,16 @@ It supports listing, reading, creating, updating, and deleting books.
 
 ## Setup Instructions
 
-1. Install dependencies
-   Create a requirements.txt (if you do not have it) with:
+1. Install dependencies  
+   Create a requirements.txt (if you do not have it) with:  
    flask
 
-   Then:
+   Then:  
    pip install -r requirements.txt
 
 2. Save the Python code as main.py
 
-3. Run the server
-   Run python main.py
+3. Run python main.py
 
    The app starts in debug mode on http://127.0.0.1:5000
 
@@ -130,31 +129,31 @@ It supports listing, reading, creating, updating, and deleting books.
 
 Using cURL
 
-1. Get all books
+1. Get all books:   
    curl -i http://127.0.0.1:5000/books
 
-2. Get a book by ID
+2. Get a book by ID:  
    curl -i http://127.0.0.1:5000/books/BK1002
 
-3. Add a new book
+3. Add a new book:  
    curl -i -X POST http://127.0.0.1:5000/books/add/BK1006 \
     -H "Content-Type: application/json" \
-    -d '{
-    "title": "Harry Potter and the Philosopher's Stone",
-    "author": "J.K. Rowling",
-    "year": 1997,
-    "publisher": "Bloomsbury"
+    -d '{  
+    "title": "Harry Potter and the Philosopher's Stone",  
+    "author": "J.K. Rowling",  
+    "year": 1997,  
+    "publisher": "Bloomsbury"  
    }'
 
-4. Update a book
+4. Update a book:  
    curl -i -X PUT http://127.0.0.1:5000/books/update/BK1006 \
     -H "Content-Type: application/json" \
-    -d '{
-    "year": 1998,
-    "publisher": "Scholastic"
+    -d '{  
+    "year": 1998,  
+    "publisher": "Scholastic"  
    }'
 
-5. Delete a book
+5. Delete a book:  
    curl -i -X DELETE http://127.0.0.1:5000/books/delete/BK1006
 
 Using Postman
@@ -165,24 +164,25 @@ Using Postman
 
 3. GET /books/:id: GET → {{baseUrl}}/books/BK1002 → Send.
 
-4. POST /books/add/:id: POST → {{baseUrl}}/books/add/BK1006
-   Body → raw → JSON:
-   {
-    "title": "Harry Potter and the Philosopher's Stone",
-    "author": "J.K. Rowling",
-    "year": 1997,
-    "publisher": "Bloomsbury"
+4. POST /books/add/:id: POST → {{baseUrl}}/books/add/BK1006  
+   Body → raw → JSON:   
+   {  
+    "title": "Harry Potter and the Philosopher's Stone",  
+    "author": "J.K. Rowling",  
+    "year": 1997,  
+    "publisher": "Bloomsbury"  
+   }  
+   Send.
+
+5. PUT /books/update/:id: PUT → {{baseUrl}}/books/update/BK1006  
+   Body → raw → JSON (any subset of fields).  
+   Example:  
+   {  
+    "title": "Harry Potter and the Sorcerer's Stone",  
+    "author": "J.K. Rowling",  
+    "year": 1998,  
+    "publisher": "Scholastic"  
    }
    Send.
 
-5. PUT /books/update/:id: PUT → {{baseUrl}}/books/update/BK1006
-   Body → raw → JSON (any subset of fields).
-   Example:
-   {
-    "title": "Harry Potter and the Sorcerer's Stone",
-    "author": "J.K. Rowling",
-    "year": 1998,
-    "publisher": "Scholastic"
-   }
-
-6. DELETE /books/delete/:id: DELETE → {{baseUrl}}/books/delete/BK1006 → Send.
+7. DELETE /books/delete/:id: DELETE → {{baseUrl}}/books/delete/BK1006 → Send.
