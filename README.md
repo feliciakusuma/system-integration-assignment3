@@ -4,8 +4,11 @@
 
 A simple Flask REST API for managing a small in-memory collection of books.
 It supports listing, retrieving, creating, updating, and deleting books.
+<<<<<<< HEAD
 
 The API is secured with **JWT-based Authentication and Authorization**. Users must register, log in to receive a JWT access token, and then include that token as a Bearer token on protected endpoints.
+=======
+>>>>>>> 575e418963cb4f3b4f172d1a746becba8af137d9
 
 ---
 
@@ -208,20 +211,33 @@ All endpoints in this section require Authorization: Bearer <token> unless other
 
 ## Usage Examples (curl)
 
+<<<<<<< HEAD
 Disable TLS verification for local self-signed certs (curl example uses `-k`).
 
 1. Register a user:  
    curl -k -X POST https://localhost:5000/register \\
    -H "Content-Type: application/json" \\
    -d '{"username":"user2","password":"pass123"}'
+=======
+1. Install dependencies  
+   Create a requirements.txt (if you do not have it) with:  
+   flask
+
+   Then:  
+   pip install -r requirements.txt
+>>>>>>> 575e418963cb4f3b4f172d1a746becba8af137d9
 
 2. Login to get a token:  
    TOKEN=$(curl -k -s -X POST https://localhost:5000/login \\
    -H "Content-Type: application/json" \\
    -d '{"username":"user2","password":"pass123"}' | jq -r .access_token)
 
+<<<<<<< HEAD
 3. Get all books:  
    curl -k -H "Authorization: Bearer $TOKEN" https://localhost:5000/books
+=======
+3. Run python main.py
+>>>>>>> 575e418963cb4f3b4f172d1a746becba8af137d9
 
 4. Get a book by ID:  
    curl -k -H "Authorization: Bearer $TOKEN" https://localhost:5000/books/BK1002
@@ -256,6 +272,7 @@ Disable TLS verification for local self-signed certs (curl example uses `-k`).
 
 1. Base setup
 
+<<<<<<< HEAD
    - Base URL: `https://localhost:5000` (self-signed; disable SSL verification for this host in Postman settings).
 
 2. Register
@@ -268,6 +285,34 @@ Disable TLS verification for local self-signed certs (curl example uses `-k`).
    ```
 
 3. Login (get token)
+=======
+1. Get all books:   
+   curl -i http://127.0.0.1:5000/books
+
+2. Get a book by ID:  
+   curl -i http://127.0.0.1:5000/books/BK1002
+
+3. Add a new book:  
+   curl -i -X POST http://127.0.0.1:5000/books/add/BK1006 \
+    -H "Content-Type: application/json" \
+    -d '{  
+    "title": "Harry Potter and the Philosopher's Stone",  
+    "author": "J.K. Rowling",  
+    "year": 1997,  
+    "publisher": "Bloomsbury"  
+   }'
+
+4. Update a book:  
+   curl -i -X PUT http://127.0.0.1:5000/books/update/BK1006 \
+    -H "Content-Type: application/json" \
+    -d '{  
+    "year": 1998,  
+    "publisher": "Scholastic"  
+   }'
+
+5. Delete a book:  
+   curl -i -X DELETE http://127.0.0.1:5000/books/delete/BK1006
+>>>>>>> 575e418963cb4f3b4f172d1a746becba8af137d9
 
    - Method/URL: `POST {{baseUrl}}/login`
    - Body: raw JSON (same as above)
@@ -276,6 +321,7 @@ Disable TLS verification for local self-signed certs (curl example uses `-k`).
 
    - Authorization tab: type `Bearer Token`, value `{{token}}` (or manually add header `Authorization: Bearer {{token}}`).
 
+<<<<<<< HEAD
 5. Example requests
    - `GET {{baseUrl}}/protected_user` (any logged-in user)
    - `GET {{baseUrl}}/protected_admin` (requires admin; login as `admin`)
@@ -284,3 +330,29 @@ Disable TLS verification for local self-signed certs (curl example uses `-k`).
    - `POST {{baseUrl}}/books/add/BK1006` (admin only; body: book JSON)
    - `PUT {{baseUrl}}/books/update/BK1006` (admin only; body: fields to change)
    - `DELETE {{baseUrl}}/books/delete/BK1006` (admin only)
+=======
+3. GET /books/:id: GET → {{baseUrl}}/books/BK1002 → Send.
+
+4. POST /books/add/:id: POST → {{baseUrl}}/books/add/BK1006  
+   Body → raw → JSON:   
+   {  
+    "title": "Harry Potter and the Philosopher's Stone",  
+    "author": "J.K. Rowling",  
+    "year": 1997,  
+    "publisher": "Bloomsbury"  
+   }  
+   Send.
+
+5. PUT /books/update/:id: PUT → {{baseUrl}}/books/update/BK1006  
+   Body → raw → JSON (any subset of fields).  
+   Example:  
+   {  
+    "title": "Harry Potter and the Sorcerer's Stone",  
+    "author": "J.K. Rowling",  
+    "year": 1998,  
+    "publisher": "Scholastic"  
+   }
+   Send.
+
+7. DELETE /books/delete/:id: DELETE → {{baseUrl}}/books/delete/BK1006 → Send.
+>>>>>>> 575e418963cb4f3b4f172d1a746becba8af137d9
