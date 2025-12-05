@@ -1,0 +1,21 @@
+{
+  "user1": {
+    "password_hash": "$pbkdf2-sha256$29000$YWwtJeSc8z7HGAPgnBOiNA$ST7ZgMpmXxE8bvNOf80Avd/IvDDVTWier/8hJa1tx.c",
+    "roles": [
+      "user"
+    ]
+  },
+  "admin": {
+    "password_hash": "$pbkdf2-sha256$29000$xZhTKoVwzrm3ljJmLIWw1g$BbcRu3DsdRbdLL/FA11u2PdsIEycpQ/VQG5iV2lfR2A",
+    "roles": [
+      "admin",
+      "user"
+    ]
+  },
+  "user2": {
+    "password_hash": "$pbkdf2-sha256$29000$vJfS.p9TihHCWAthLCUE4A$k5OHk1l2BTFS7ZOdwXi744wHKZjKA1MNU./.llit/fs",
+    "roles": [
+      "user"
+    ]
+  }
+}
